@@ -49,7 +49,9 @@ body, html {
 /* Logo styling (now inside hero-content) */
 .hero-logo {
     /* max-width: 180px; */ /* Old size */
-    max-width: 270px; /* Increased size by 50% */
+    /* max-width: 270px; */ /* Increased size by 50% - Previous */
+    /* max-width: 405px; */ /* Increased size by another 50% - Previous */
+    max-width: 506px; /* Increased size by another 25% */
     height: auto; 
     margin-bottom: 25px; /* Adjusted space */
     /* Logo is centered by flexbox in parent */
@@ -178,7 +180,9 @@ body, html {
 @media (max-width: 767px) {
     .hero-logo {
         /* max-width: 140px; */ /* Old mobile size */
-        max-width: 210px; /* Increased mobile size by 50% */
+        /* max-width: 210px; */ /* Increased mobile size by 50% - Previous */
+        /* max-width: 315px; */ /* Increased mobile size by another 50% - Previous */
+        max-width: 394px; /* Increased mobile size by another 25% */
         margin-bottom: 20px; 
     }
 
