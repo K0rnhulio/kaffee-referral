@@ -11,14 +11,13 @@ body, html {
     /* background-image: url('https://source.unsplash.com/random/1920x1080/?bali,coffee'); */ /* Removed */
     /* background-size: cover; */ /* Handled by img */
     /* background-position: center; */ /* Handled by img */
-    height: 100vh; /* Full viewport height */
+    min-height: 100vh; /* Minimum full viewport height, allows expansion */
     display: flex;
     justify-content: center;
     align-items: center;
     /* text-align: center; */ /* Content alignment handled by inner container */
     color: white;
     position: relative; /* Needed for overlay and image positioning */
-    overflow: hidden; /* Hide image parts that might overflow */
     padding: 20px; /* Add some padding to prevent content hitting edges */
     box-sizing: border-box; /* Include padding in height/width */
 }
