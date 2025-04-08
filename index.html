@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bali Immobilien & Kaffee</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <section class="hero">
+        <picture>
+            <!-- Desktop Image (e.g., wider screens) -->
+            <source media="(min-width: 768px)" srcset="https://bali-invest.b-cdn.net/desktop.jpg">
+            <!-- Mobile Image (default/smaller screens) -->
+            <img src="https://bali-invest.b-cdn.net/mobile.jpg" alt="Bali Szene mit Kaffee" class="hero-background-image">
+        </picture>
+        <div class="hero-content">
+          <img src="https://bali-invest.b-cdn.net/Logo.png" alt="Firmenlogo" class="hero-logo">
+          <h1>Hol dir den Geschmack Balis direkt nach Hause!</h1>
+          <p>Sichere dir jetzt deine kostenlose Kaffeeprobe – original balinesischer Premium-Kaffee, der nicht nur schmeckt, sondern auch überzeugt.</p>
+          
+          <form id="coffee-form-id" action="https://services.leadconnectorhq.com/hooks/osPItgxGejSCe6sUpz4h/webhook-trigger/089169ce-741d-4931-bb51-e0f582bb48a6" method="post" class="coffee-form">
+            <div class="form-group">
+              <label for="name">Vor- und Nachname:</label>
+              <input type="text" id="name" name="name" required placeholder="Max Mustermann">
+            </div>
+            <div class="form-group">
+              <label for="email">E-Mail-Adresse:</label>
+              <input type="email" id="email" name="email" required placeholder="max.mustermann@beispiel.de">
+            </div>
+            <div class="form-group">
+              <label for="phone">Telefonnummer:</label>
+              <input type="tel" id="phone" name="phone" placeholder="+49 123 456789">
+            </div>
+            <div class="form-group">
+              <label for="address">Straße und Hausnummer:</label>
+              <input type="text" id="address" name="address" required placeholder="Musterstraße 1">
+            </div>
+            <div class="form-group form-group-inline">
+              <div>
+                <label for="zip">PLZ:</label>
+                <input type="text" id="zip" name="zip" required placeholder="12345" class="zip-input">
+              </div>
+              <div>
+                <label for="city">Ort:</label>
+                <input type="text" id="city" name="city" required placeholder="Musterstadt" class="city-input">
+              </div>
+            </div>
+            <button type="submit" class="cta-button">Kostenlose Probe anfordern</button>
+          </form>
+
+          <!-- Success Message (initially hidden) -->
+          <div id="success-message" class="success-message" style="display: none;">
+            <p>Deine kostenlose Probe unseres balinesischen Premium-Kaffees ist so gut wie auf dem Weg zu dir. <br>
+Wir haben deine Daten erhalten und bereiten die Sendung gerade vor.</p>
+            <p>Bitte habe ein wenig Geduld, die Zustellung dauert in der Regel [z.B. 3-5] Werktage.</p>
+            <p>Viel Vorfreude beim Warten,<br>Dein Bali Invest Team</p>
+          </div>
+
+          <!-- <a href="#" class="cta-button">Kostenlose Probe anfordern</a> --> <!-- Replaced by button -->
+        </div>
+    </section>
+
+    <script>
+      const form = document.getElementById('coffee-form-id');
+      const successMessage = document.getElementById('success-message');
+
+      form.addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent default browser submission
+
+        const formData = new FormData(form);
+        const webhookUrl = form.action;
+
+        // Optional: Show a temporary loading indicator here
+
+        fetch(webhookUrl, {
+          method: 'POST',
+          body: formData,
+          // Headers might be needed depending on the webhook, but often not for simple form data
+          // mode: 'no-cors' // Use this if you face CORS issues and don't need to read the response
+        })
+        .then(response => {
+          // We assume success if the request could be sent, 
+          // as 'no-cors' or cross-origin policies might prevent reading response status.
+          // A more robust check would involve checking response.ok if not using 'no-cors'.
+          form.style.display = 'none'; // Hide the form
+          successMessage.style.display = 'block'; // Show the success message
+          
+          // Optional: Hide loading indicator
+        })
+        .catch(error => {
+          console.error('Error submitting form:', error);
+          // Optional: Show an error message to the user
+          alert('Fehler beim Senden des Formulars. Bitte versuchen Sie es später erneut.');
+          // Optional: Hide loading indicator
+        });
+      });
+    </script>
+
+</body>
+</html>
