@@ -182,7 +182,8 @@ body, html {
         /* max-width: 140px; */ /* Old mobile size */
         /* max-width: 210px; */ /* Increased mobile size by 50% - Previous */
         /* max-width: 315px; */ /* Increased mobile size by another 50% - Previous */
-        max-width: 394px; /* Increased mobile size by another 25% */
+        /* max-width: 394px; */ /* Increased mobile size by another 25% - Replaced */
+        max-width: 90%; /* Set max-width relative to container */
         margin-bottom: 20px; 
     }
 
