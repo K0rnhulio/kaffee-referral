@@ -48,6 +48,8 @@
               <label for="email">E-Mail-Adresse:</label>
               <input type="email" id="email" name="email" required placeholder="max.mustermann@beispiel.de">
             </div>
+            <!-- Hidden input for referral ID -->
+            <input type="hidden" id="referral_id" name="referral_id">
             <div class="form-group">
               <label for="phone">Telefonnummer:</label>
               <input type="tel" id="phone" name="phone" placeholder="+49 123 456789">
@@ -87,6 +89,13 @@ Wir haben deine Daten erhalten und bereiten die Sendung gerade vor.</p>
 
       form.addEventListener('submit', function(event) {
         event.preventDefault(); // Prevent default browser submission
+
+        // Set referral ID from URL to hidden input before sending
+        const urlParams = new URLSearchParams(window.location.search);
+        const referralId = urlParams.get('ref');
+        if (referralId) {
+          document.getElementById('referral_id').value = referralId;
+        }
 
         const formData = new FormData(form);
         const webhookUrl = form.action;
