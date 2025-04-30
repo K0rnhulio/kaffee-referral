@@ -130,6 +130,13 @@ Wir haben deine Daten erhalten und bereiten die Sendung gerade vor.</p>
           // We assume success if the request could be sent, 
           // as 'no-cors' or cross-origin policies might prevent reading response status.
           // A more robust check would involve checking response.ok if not using 'no-cors'.
+
+          // --- Track Lead event with Meta Pixel ---
+          if (typeof fbq === 'function') {
+            fbq('track', 'Lead');
+          }
+          // -----------------------------------------
+
           form.style.display = 'none'; // Hide the form
           successMessage.style.display = 'block'; // Show the success message
           
